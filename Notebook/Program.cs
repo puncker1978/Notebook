@@ -24,82 +24,98 @@ namespace Notebook
         Программа создаёт Xml файл, содержащий все данные о контакте.*/
     class Program
     {
-        
 
-       
-            
-           
+        internal static bool IsNumber(string num)
+        {
+            bool isNum = true;
+            foreach (char ch in num)
+            {
+                if (ch < '0' || ch > '9')
+                {
+                    isNum = false;
+                    break;
+                }
+            }
+            return isNum;
+        }
+
+
+
         static void Main(string[] args)
         {
+            Person person;
             for (; ; )
             {
-                Person person = new Person();
 
                 Random rnd = new Random();
-                person.Id = rnd.Next(int.MaxValue);
+                int id = rnd.Next(int.MaxValue);
                 
                 Console.WriteLine($"Введите данные");
 
 
                 Console.Write("Фамилия: ");
-                person.SecondName = Console.ReadLine();
+                string secondName = Console.ReadLine();
 
                 Console.Write("Имя: ");
-                person.FirstName = Console.ReadLine();
+                string firstName = Console.ReadLine();
 
                 Console.Write("Отчество: ");
-                person.Patronymic = Console.ReadLine();
+                string patronymic = Console.ReadLine();
 
                 Console.Write("Город/Село/Посёлок/Деревня: ");
-                person.Town = Console.ReadLine();
+                string town = Console.ReadLine();
 
                 Console.Write("Улица: ");
-                person.Street = Console.ReadLine();
+                string street = Console.ReadLine();
 
                 Console.Write("Дом: ");
-                person.HouseNumber = Console.ReadLine();
+                string houseNumber = Console.ReadLine();
 
                 Console.Write("Квартира: ");
-                person.FlatNumber = Console.ReadLine();
+                string flatNumber = Console.ReadLine();
 
                 
-                string phoneNumber;
+                string phoneNumber, mobilePhone, homePhone, workPhone;
 
                 Console.Write("Мобильный: ");
                 phoneNumber = Console.ReadLine();
-                if (person.IsNumber(phoneNumber))
+                if (IsNumber(phoneNumber))
                 {
-                    person.MobilePhone = phoneNumber;
+                    mobilePhone = phoneNumber;
                 }
                 else
                 {
-                    person.MobilePhone = "нет";
+                    mobilePhone = "нет";
                 }
 
                 Console.Write("Домашний: ");
                 phoneNumber= Console.ReadLine();
-                if (person.IsNumber(phoneNumber))
+                if (IsNumber(phoneNumber))
                 {
-                    person.HomePhone = phoneNumber;
+                    homePhone = phoneNumber;
                 }
                 else
                 {
-                    person.HomePhone = "Нет";
+                    homePhone = "Нет";
                 }
 
                 Console.Write("Рабочий: ");
                 phoneNumber = Console.ReadLine();
-                if (person.IsNumber(phoneNumber))
+                if (IsNumber(phoneNumber))
                 {
-                    person.WorkPhone = phoneNumber;
+                    workPhone = phoneNumber;
                 }
                 else
                 {
-                    person.WorkPhone = "Нет";
+                    workPhone = "Нет";
                 }
 
-                //Добавляем данные об одном человеке в список сведений о персонах
-                personList.Add(person);
+                //Инициализируем сведения об одной записи
+                person = new Person(id,firstName,secondName,patronymic,town,street,houseNumber,flatNumber,
+                    mobilePhone,homePhone,workPhone);
+
+                //Добавляем одну запись в список записей
+                person.PersonList.Add(person);
 
                 //Очищаем окно консоли
                 Console.Clear();
@@ -113,7 +129,7 @@ namespace Notebook
 
             //Добавляем сведения об одной персоне в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
-            xml.AddRecord(personList);
+            xml.AddRecord(person.PersonList);
             Console.ReadKey();
         }
     }

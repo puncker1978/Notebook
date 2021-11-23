@@ -135,6 +135,7 @@ namespace Notebook
         /// <summary>
         /// Конструктор инициализирует сведения об одной записи записной книжки
         /// </summary>
+        /// <param name="Id">Id</param>
         /// <param name="FirstName">Имя</param>
         /// <param name="SecondName">Фамилия</param>
         /// <param name="Patronymic">Отчество</param>
@@ -145,7 +146,7 @@ namespace Notebook
         /// <param name="MobilePhone">Мобильный</param>
         /// <param name="HomePhone">Домашний</param>
         /// <param name="WorkPhone">Рабочий</param>
-        public Person(string FirstName, string SecondName, string Patronymic, string Town, string Street,
+        internal Person(int Id, string FirstName, string SecondName, string Patronymic, string Town, string Street,
             string HouseNumber, string FlatNumber, string MobilePhone, string HomePhone, string WorkPhone)
         {
             Random rnd = new Random();
@@ -166,24 +167,7 @@ namespace Notebook
 
 
         #region Методы
-        /// <summary>
-        /// Метод, который проверяет, что введена строка, содержащая только цифры
-        /// </summary>
-        /// <param name="num">Номер телефона должен состоять только из цифр</param>
-        /// <returns></returns>
-        internal bool IsNumber(string num)
-        {
-            bool isNum = true;
-            foreach (char ch in num)
-            {
-                if (ch < '0' || ch > '9')
-                { 
-                    isNum = false;
-                    break;
-                }
-            }
-            return isNum;
-        }
+        
         #endregion
     }
 }
