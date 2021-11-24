@@ -44,6 +44,7 @@ namespace Notebook
         static void Main(string[] args)
         {
             Person person;
+            ListPerson listPerson = new ListPerson();
             for (; ; )
             {
 
@@ -111,11 +112,11 @@ namespace Notebook
                 }
 
                 //Инициализируем сведения об одной записи
-                person = new Person(id,firstName,secondName,patronymic,town,street,houseNumber,flatNumber,
-                    mobilePhone,homePhone,workPhone);
+                person = new Person(firstName,secondName,patronymic,town,street,houseNumber,flatNumber,
+                    mobilePhone, homePhone, workPhone);
 
                 //Добавляем одну запись в список записей
-                person.PersonList.Add(person);
+                listPerson.AddToListPerson(person);
 
                 //Очищаем окно консоли
                 Console.Clear();
@@ -127,9 +128,9 @@ namespace Notebook
                 else break;
             }
 
-            //Добавляем сведения об одной персоне в файл notebook.xml с помощью метода AddRecord класса Xml
+            //Добавляем список сведений о персонах в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
-            xml.AddRecord(person.PersonList);
+            xml.AddRecord(listPerson.Persons);
             Console.ReadKey();
         }
     }

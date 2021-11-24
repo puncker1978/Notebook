@@ -62,11 +62,6 @@ namespace Notebook
         /// </summary>
         private string workPhone;
 
-        /// <summary>
-        /// Список записей
-        /// </summary>
-        List<Person> personList = new List<Person>();
-
         #endregion
 
         #region Свойства
@@ -125,17 +120,12 @@ namespace Notebook
         /// </summary>
         internal string WorkPhone { get => workPhone; set => workPhone = value; }
 
-        /// <summary>
-        /// Список записей
-        /// </summary>
-        internal List<Person> PersonList { get => personList; set => personList = value; }
         #endregion
 
         #region Конструктор
         /// <summary>
         /// Конструктор инициализирует сведения об одной записи записной книжки
         /// </summary>
-        /// <param name="Id">Id</param>
         /// <param name="FirstName">Имя</param>
         /// <param name="SecondName">Фамилия</param>
         /// <param name="Patronymic">Отчество</param>
@@ -146,7 +136,7 @@ namespace Notebook
         /// <param name="MobilePhone">Мобильный</param>
         /// <param name="HomePhone">Домашний</param>
         /// <param name="WorkPhone">Рабочий</param>
-        internal Person(int Id, string FirstName, string SecondName, string Patronymic, string Town, string Street,
+        internal Person(string FirstName, string SecondName, string Patronymic, string Town, string Street,
             string HouseNumber, string FlatNumber, string MobilePhone, string HomePhone, string WorkPhone)
         {
             Random rnd = new Random();

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Notebook
 {
+    /// <summary>
+    /// Класс содержащий сведения о записях в записной книжке
+    /// </summary>
     internal class ListPerson
     {
         #region Поля
@@ -21,11 +24,18 @@ namespace Notebook
         #endregion
 
         #region Конструкторы
-        public ListPerson(List<Person> persons)
-        {
-            Persons = persons;
-        }
+        //public ListPerson(Person person)
+        //{
+        //    Persons.Add(person);
+        //}
 
+        #endregion
+
+        #region Методы
+        internal void AddToListPerson(Person person)
+        {
+            Persons.Add(person);
+        }
         #endregion
     }
 }
