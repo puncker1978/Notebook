@@ -44,79 +44,86 @@ namespace Notebook
         static void Main(string[] args)
         {
             Person person;
-            ListPerson listPerson = new ListPerson();
+
+            // Инициализация списка аписей
+            List<Person> listPerson = new List<Person>();
+            
             for (; ; )
             {
-
-                Random rnd = new Random();
-                int id = rnd.Next(int.MaxValue);
+                #region Инициализируем кажое поле для записи
                 
-                Console.WriteLine($"Введите данные");
+                    Random rnd = new Random();
+                    int id = rnd.Next(int.MaxValue);
+
+                    Console.WriteLine($"Введите данные");
 
 
-                Console.Write("Фамилия: ");
-                string secondName = Console.ReadLine();
+                    Console.Write("Фамилия: ");
+                    string secondName = Console.ReadLine();
 
-                Console.Write("Имя: ");
-                string firstName = Console.ReadLine();
+                    Console.Write("Имя: ");
+                    string firstName = Console.ReadLine();
 
-                Console.Write("Отчество: ");
-                string patronymic = Console.ReadLine();
+                    Console.Write("Отчество: ");
+                    string patronymic = Console.ReadLine();
 
-                Console.Write("Город/Село/Посёлок/Деревня: ");
-                string town = Console.ReadLine();
+                    Console.Write("Город/Село/Посёлок/Деревня: ");
+                    string town = Console.ReadLine();
 
-                Console.Write("Улица: ");
-                string street = Console.ReadLine();
+                    Console.Write("Улица: ");
+                    string street = Console.ReadLine();
 
-                Console.Write("Дом: ");
-                string houseNumber = Console.ReadLine();
+                    Console.Write("Дом: ");
+                    string houseNumber = Console.ReadLine();
 
-                Console.Write("Квартира: ");
-                string flatNumber = Console.ReadLine();
+                    Console.Write("Квартира: ");
+                    string flatNumber = Console.ReadLine();
 
+
+                    string phoneNumber, mobilePhone, homePhone, workPhone;
+
+                    Console.Write("Мобильный: ");
+                    phoneNumber = Console.ReadLine();
+                    if (IsNumber(phoneNumber))
+                    {
+                        mobilePhone = phoneNumber;
+                    }
+                    else
+                    {
+                        mobilePhone = "нет";
+                    }
+
+                    Console.Write("Домашний: ");
+                    phoneNumber = Console.ReadLine();
+                    if (IsNumber(phoneNumber))
+                    {
+                        homePhone = phoneNumber;
+                    }
+                    else
+                    {
+                        homePhone = "Нет";
+                    }
+
+                    Console.Write("Рабочий: ");
+                    phoneNumber = Console.ReadLine();
+                    if (IsNumber(phoneNumber))
+                    {
+                        workPhone = phoneNumber;
+                    }
+                    else
+                    {
+                        workPhone = "Нет";
+                    }
+                #endregion
+
+                #region Инициализация экземпляра класса Person с помощью конструктора с параметрами
+                //Передаём в экземпляр класса с помощью конструктора сведения об одной записи
+                person = new Person(firstName, secondName, patronymic, town, street, houseNumber, flatNumber,
+                        mobilePhone, homePhone, workPhone);
+                #endregion
                 
-                string phoneNumber, mobilePhone, homePhone, workPhone;
-
-                Console.Write("Мобильный: ");
-                phoneNumber = Console.ReadLine();
-                if (IsNumber(phoneNumber))
-                {
-                    mobilePhone = phoneNumber;
-                }
-                else
-                {
-                    mobilePhone = "нет";
-                }
-
-                Console.Write("Домашний: ");
-                phoneNumber= Console.ReadLine();
-                if (IsNumber(phoneNumber))
-                {
-                    homePhone = phoneNumber;
-                }
-                else
-                {
-                    homePhone = "Нет";
-                }
-
-                Console.Write("Рабочий: ");
-                phoneNumber = Console.ReadLine();
-                if (IsNumber(phoneNumber))
-                {
-                    workPhone = phoneNumber;
-                }
-                else
-                {
-                    workPhone = "Нет";
-                }
-
-                //Инициализируем сведения об одной записи
-                person = new Person(firstName,secondName,patronymic,town,street,houseNumber,flatNumber,
-                    mobilePhone, homePhone, workPhone);
-
                 //Добавляем одну запись в список записей
-                listPerson.AddToListPerson(person);
+                listPerson.Add(person);
 
                 //Очищаем окно консоли
                 Console.Clear();
@@ -130,7 +137,7 @@ namespace Notebook
 
             //Добавляем список сведений о персонах в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
-            xml.AddRecord(listPerson.Persons);
+            xml.AddRecord(listPerson);
             Console.ReadKey();
         }
     }

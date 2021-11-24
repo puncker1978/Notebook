@@ -152,7 +152,6 @@ namespace Notebook
             this.HomePhone = HomePhone;
             this.WorkPhone = WorkPhone;
         }
-        //public Person() { }
         #endregion
 
 
