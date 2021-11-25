@@ -45,7 +45,7 @@ namespace Notebook
         {
             Person person;
 
-            // Инициализация списка аписей
+            // Инициализация списка записей
             List<Person> listPerson = new List<Person>();
             
             for (; ; )
