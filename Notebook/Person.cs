@@ -154,7 +154,6 @@ namespace Notebook
         }
         #endregion
 
-
         #region Методы
         
         #endregion
