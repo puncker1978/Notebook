@@ -24,7 +24,11 @@ namespace Notebook
         Программа создаёт Xml файл, содержащий все данные о контакте.*/
     class Program
     {
-
+        /// <summary>
+        /// Статический метод, который проверяет, что введённая строка является последовательностью цифр
+        /// </summary>
+        /// <param name="num">Телефон</param>
+        /// <returns></returns>
         internal static bool IsNumber(string num)
         {
             bool isNum = true;
@@ -46,7 +50,7 @@ namespace Notebook
             Person person;
 
             // Инициализация списка записей
-            List<Person> listPerson = new List<Person>();
+            //List<Person> listPerson = new List<Person>();
             
             for (; ; )
             {
@@ -123,7 +127,7 @@ namespace Notebook
                 #endregion
                 
                 //Добавляем одну запись в список записей
-                listPerson.Add(person);
+                Records.AddRecord(person);
 
                 //Очищаем окно консоли
                 Console.Clear();
@@ -137,7 +141,7 @@ namespace Notebook
 
             //Добавляем список сведений о персонах в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
-            xml.AddRecord(listPerson);
+            xml.AddRecord(Records.people);
             Console.ReadKey();
         }
     }
