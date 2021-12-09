@@ -139,6 +139,19 @@ namespace Notebook
                 else break;
             }
 
+            Console.Clear();
+            //for (; ; )
+            {
+                Console.WriteLine("Ищем запись по фамилии");
+                Console.Write("Введите Фамилию: ");
+                string str = Console.ReadLine();
+                Person per = Records.FindRecord(str);
+                Console.WriteLine(per);
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+
             //Добавляем список сведений о персонах в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
             xml.AddRecord(Records.people);

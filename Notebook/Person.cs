@@ -61,7 +61,6 @@ namespace Notebook
         /// Рабочий
         /// </summary>
         private string workPhone;
-
         #endregion
 
         #region Свойства
@@ -155,7 +154,12 @@ namespace Notebook
         #endregion
 
         #region Методы
-        
+        public override string ToString()
+        {
+            return $"Id: {Id}\tФамилия:  {SecondName}\tИмя: {FirstName}\tОтчество: {Patronymic}\t" +
+                $"Город: {Town}\tУлица: {Street}\tДом: {HouseNumber}\tКвартира: {FlatNumber}\t" +
+                $"Сотовый: {MobilePhone}\tДомашний: {HomePhone}\tРабочий: {WorkPhone}";
+        }
         #endregion
     }
 }
