@@ -140,17 +140,27 @@ namespace Notebook
             }
 
             Console.Clear();
-            //for (; ; )
-            {
-                Console.WriteLine("Ищем запись по фамилии");
-                Console.Write("Введите Фамилию: ");
-                string str = Console.ReadLine();
-                Person per = Records.FindRecord(str);
-                Console.WriteLine(per);
-                Console.ReadKey();
-                Console.Clear();
-            }
+            #region Поиск записи по фамилии
+            Console.WriteLine("Ищем запись по фамилии");
+            Console.Write("Введите Фамилию: ");
+            string str = Console.ReadLine();
+            Person per = Records.FindRecord(str);
+            Console.WriteLine(per);
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
 
+            Console.Clear();
+            #region Удаление записи из списка записей
+            Console.WriteLine("Удаляем запись из списка по фамилии");
+            Console.Write("Введите Фамилию: ");
+            str = Console.ReadLine();
+            per = Records.FindRecord(str);
+            Records.DeleteRecord(per);
+            Console.WriteLine($"Запись {per} удалена" );
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
 
             //Добавляем список сведений о персонах в файл notebook.xml с помощью метода AddRecord класса Xml
             Xml xml = new Xml();
